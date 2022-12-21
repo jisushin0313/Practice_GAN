@@ -8,34 +8,34 @@ class Generator(nn.Module):
         self.main = nn.Sequential(
             # input is Z, going into a convolution
             # nc=3, ngf = 64
-            nn.ConvTranspose2d(nz, ngf * 8, kernel_size=4, stride=1, padding=0, bias=False),
+            nn.ConvTranspose2d(nz, ngf * 8, kernel_size=4, stride=1, padding=0, bias=False),    # (nc, 1, 1) -> (ngf*8, 4, 4)
             nn.BatchNorm2d(ngf * 8),
             nn.ReLU(True),
             # state size. (ngf*8) x 4 x 4
-            nn.ConvTranspose2d(ngf * 8, ngf * 4, 4, 2, 1, bias=False),
+            nn.ConvTranspose2d(ngf * 8, ngf * 4, 4, 2, 1, bias=False),  # (ngf*8, 4, 4) -> (ngf*4, 8, 8)
             nn.BatchNorm2d(ngf * 4),
             nn.ReLU(True),
             # state size. (ngf*4) x 8 x 8
-            nn.ConvTranspose2d(ngf * 4, ngf * 2, 4, 2, 1, bias=False),
+            nn.ConvTranspose2d(ngf * 4, ngf * 2, 4, 2, 1, bias=False),  # (ngf*4, 8, 8) -> (ngf*2, 16, 16)
             nn.BatchNorm2d(ngf * 2),
             nn.ReLU(True),
             # state size. (ngf*2) x 16 x 16
-            nn.ConvTranspose2d(ngf * 2, ngf * 2, 4, 2, 1, bias=False),
+            nn.ConvTranspose2d(ngf * 2, ngf * 2, 4, 2, 1, bias=False),  # (ngf*2, 16, 16) -> (ngf*2, 32, 32)
             nn.BatchNorm2d(ngf*2),
             nn.ReLU(True),
-            # (ngf*2) x 32 x 32
+            # state size. (ngf*2) x 32 x 32
             # custom layer
-            nn.ConvTranspose2d(ngf*2, ngf, 3, 1, 1, bias=False),
+            nn.ConvTranspose2d(ngf*2, ngf, 3, 1, 1, bias=False),        # (ngf*2, 32, 32) -> (ngf, 32, 32)
             nn.BatchNorm2d(ngf),
             nn.ReLU(True),
             # state size. (ngf) x 32 x 32
             # custom layer
-            nn.ConvTranspose2d(ngf, ngf, 4, 2, 1, bias=False),
+            nn.ConvTranspose2d(ngf, ngf, 4, 2, 1, bias=False),          # (ngf, 32, 32) -> (ngf, 64, 64)
             nn.BatchNorm2d(ngf),
             nn.ReLU(True),
             # state size. (ngf) x 64 x 64
             # custom layer
-            nn.ConvTranspose2d(ngf, nc, 3, 1, 1, bias=False),
+            nn.ConvTranspose2d(ngf, nc, 3, 1, 1, bias=False),           # (ngf, 64, 64) -> (nc, 64, 64)
             nn.Tanh()
             # state size. (nc) x 64 x 64
         )

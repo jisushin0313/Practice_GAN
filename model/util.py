@@ -42,7 +42,7 @@ def save_image_list(model_name, dataset, real, best, path):
     for i in range(len(dataset)):
         save_path = f'{base_path}/image_{i}.png'
         #dataset_path.append(save_path)
-        vutils.save_image((dataset[i]+1)/2, save_path)
+        vutils.save_image((dataset[i]+1)/2, save_path)  # denormalize and save image
 
     return base_path
 
