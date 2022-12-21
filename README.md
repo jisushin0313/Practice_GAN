@@ -1,6 +1,6 @@
 # Practice_GAN
 
-## Excecution command
+## Commands for execution
 ### Prerequisite
 ~~~
 # set your conda environment
@@ -8,14 +8,18 @@ $ conda env create --file requirments.yml
 
 # change the name of conda environment to whatever you want
 $ conda rename -n AI504_GAN new_name
+
+# change your working directory for execute train and eval files
+$ cd model
 ~~~
 
+### Training and Evaluation
 ~~~
 # for training
-python model/main.py --do_train=True
+$ python main.py --do_train=True
 
 # for evaluation
-python model/main.py --do_eval=True
+$ python main.py --do_eval=True
 ~~~
 
 Arguments
