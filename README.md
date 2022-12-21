@@ -1,7 +1,13 @@
 # Practice_GAN
 
-## Commands for execution
-### Prerequisite
+### My DCGAN
+I modified the structure of original DCGAN (Radford et al., 2015).
+- I attached two more 2D Conv layers in the Generator model (see `model/gan_family/dcgan.py`).
+- For better FID scores, I denormalized the images after generation (see `model/util.py`).
+- My best FID score was 34.61, achieved by hyperparameter tuning (random seed, nz, epochs).
+
+### Commands for execution
+#### Prerequisite
 ~~~
 # set your conda environment
 $ conda env create --file requirments.yml
@@ -13,7 +19,7 @@ $ conda rename -n AI504_GAN new_name
 $ cd model
 ~~~
 
-### Training and Evaluation
+#### Training and Evaluation
 ~~~
 # for training
 $ python main.py --do_train=True
@@ -22,7 +28,7 @@ $ python main.py --do_train=True
 $ python main.py --do_eval=True
 ~~~
 
-Arguments
+#### Arguments
 ~~~
 # --arg = default_value
 --seed = 42
@@ -48,3 +54,7 @@ Arguments
 --do_train = False
 --do_eval = False
 ~~~
+
+### References
+- Radford, Alec, Luke Metz, and Soumith Chintala. "Unsupervised representation learning with deep convolutional generative adversarial networks." arXiv preprint arXiv:1511.06434 (2015).
+- DCGAN TUTORIAL@PyTorch (https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html)
