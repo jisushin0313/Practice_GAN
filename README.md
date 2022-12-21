@@ -1,6 +1,15 @@
 # Practice_GAN
 
-Excecution command
+## Excecution command
+### Prerequisite
+~~~
+# set your conda environment
+$ conda env create --file requirments.yml
+
+# change the name of conda environment to whatever you want
+$ conda rename -n AI504_GAN new_name
+~~~
+
 ~~~
 # for training
 python model/main.py --do_train=True
