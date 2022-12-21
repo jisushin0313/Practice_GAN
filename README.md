@@ -15,6 +15,7 @@ $ conda env create --file requirments.yml
 
 # change the name of conda environment to whatever you want
 $ conda rename -n AI504_GAN new_name
+$ conda activate new_name
 
 # change your working directory for execute train and eval files
 $ cd model
@@ -55,6 +56,7 @@ $ python main.py --do_eval=True
 --do_train = False
 --do_eval = False
 ~~~
+example: `python main.py --do_train=True --gpu_id='0' --seed=3 --nz=100`
 
 ### References
 - Radford, Alec, Luke Metz, and Soumith Chintala. "Unsupervised representation learning with deep convolutional generative adversarial networks." arXiv preprint arXiv:1511.06434 (2015).
