@@ -6,6 +6,7 @@ I modified the structure of original DCGAN (Radford et al., 2015).
 - For better FID scores, I denormalized the images after generation (see `model/util.py`).
 - My best FID score was 34.61, achieved by hyperparameter tuning (random seed, nz, epochs).
 
+
 ### Commands for execution
 #### Prerequisite
 ~~~
